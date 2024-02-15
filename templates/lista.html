@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista prenotazioni</title>
+        <link rel="stylesheet" href='static/style.css'>
+    </head>
+    <body>
+        <h1>Lista delle prenotazioni</h1>
+        
+        <h2>Bar:</h2>
+        {% for ip in userQueue %}
+            {% if userList[ip].tipoUscita == 'bar' %}
+                <li>{{userList[ip].nome}} {% if userList[ip].isOut == True %}<strong>è fuori</strong>{% endif %}</li>
+            {% endif %}
+        {% endfor %}
+
+        <h2>Bagno:</h2>
+        {% for ip in userQueue %}
+            {% if userList[ip].tipoUscita == 'bagno' %}
+            <li>{{userList[ip].nome}} {% if userList[ip].isOut == True %}<strong>è fuori</strong>{% endif %}</li>
+            {% endif %}
+        {% endfor %}
+
+        {% if ip in userQueue %}
+            {% if userList[ip].canExit %}
+                {% if not userList[ip].isOut %}
+                    <p>Puoi uscire</p>
+                    <a href="{{ url_for('esci') }}"><button>Esci</button></a><br>
+                {% else %}
+                    <p>Se sei tornato, clicca il bottone</p>
+                    <a href="{{ url_for('torna') }}"><button>Sono tornato</button></a><br>
+                {% endif %}
+            {% else %}
+                <p>Non puoi ancora uscire</p>
+            {% endif %}
+        {% endif %}
+
+        {% if ip in userQueue and not userList[ip].isOut %}
+            <a href="{{ url_for('torna') }}"><button>Rimuovimi</button></a><br>
+        {% endif %}
+
+        <p>La lista non si aggiorna automaticamente, ricarica la pagina per vedere gli aggiornamenti.</p>
+        <a href="{{ url_for('showList') }}"><button>Aggiorna la pagina</button></a>
+        <br><br>
+        <a href="/prenotati">Torna indietro</a>
+    </body>
+</html>

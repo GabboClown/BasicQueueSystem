@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prenotazione</title>
+        <link rel="stylesheet" href='static/style.css'>
+    </head>
+    <body>
+        <div class = 'simple-container'>
+            <h1>Prenotati Qui</h1>
+            <form action="/evaluatelist" method="post">
+                <label for="name">Inserisci il tuo cognome:</label>
+                <br>
+                <input type="text" name="name" placeholder="Cognome">
+                <br><br>
+                <label for="tipo_uscita">Dove vai?</label>
+                <br>
+                <select name="tipo_uscita" id="tipo_uscita">
+                    <option value="bagno">Bagno</option>
+                    <option value="bar">Bar</option>
+                </select>
+                <br><br>
+                <button type="submit">Prenotati</button>
+            </form>
+            <br><br>
+            <a href="/listaprenotati">Guarda la lista delle prenotazioni</a>
+        </div>
+    </body>
+</html>
