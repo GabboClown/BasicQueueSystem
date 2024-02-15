@@ -17,5 +17,5 @@ Usage:
 The application is intended to be used by owners or managers of facilities that require a system to manage user reservations and monitor activities within the facility.
 
 Credits:
-getcssscan.com for css button style
+getcssscan.com for css button style.
 GitHub user ZachSaucier for css page layout
